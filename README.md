@@ -12,6 +12,8 @@ Pure php library for jasper reports
 #Usage
 ### Listing resources on the server:
 
+```php
+
     use francodacosta\Jasper\Transport\SoapTransport;
     use francodacosta\Jasper\Request\Repository\ListResources;
     
@@ -28,3 +30,5 @@ Pure php library for jasper reports
     foreach($resources as $resource) {
         echo $resource . "\n";
     }
+    
+```
