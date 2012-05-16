@@ -18,29 +18,49 @@ class Resource
     private $isNew;
     private $properties = array();
 
+    private $attachments = array();
+
     /**
      * Populates the resource from a xml document
      *
      * @param \SimpleXMLElement $response
      */
-    public function fromJasperListResponse(\SimpleXMLElement $response)
+    public function fromJasperListResponse(\SimpleXMLElement $xml, $obj = null)
     {
-        $this->id = (string) $response->attributes()->name;
-        $this->type = (string) $response->attributes()->wsType;
-        $this->uri = (string) $response->attributes()->uriString;
-        $this->isNew = (string) $response->attributes()->isNew;
-        $this->label = (string) @$response->label;
-        $this->description = (string) @$response->description;
-        $this->creationDate = (string) @$response->creationDate;
 
+        $response = $xml->resourceDescriptor ? $xml->resourceDescriptor : $xml;
+        $obj = null === $obj ? $this : $obj;
+
+
+        $obj->id = (string) $response->attributes()->name;
+        $obj->type = (string) $response->attributes()->wsType;
+        $obj->uri = (string) $response->attributes()->uriString;
+        $obj->isNew = (string) $response->attributes()->isNew;
+        $obj->label = (string) @$response->label;
+        $obj->description = (string) @$response->description;
+        $obj->creationDate = (string) @$response->creationDate;
+
+        $this->processProperties($response, $obj);
+
+        foreach ($response->resourceDescriptor as $resource) {
+            $resourceObj = new Resource();
+            $resourceObj->fromJasperListResponse($resource);
+            $this->attachments[] = $resourceObj;
+        }
+
+    }
+
+    private function processProperties(\SimpleXMLElement $response, $obj)
+    {
         foreach ($response->resourceProperty as $property) {
             $name = strtoupper($property->attributes()->name);
             $value = (string) $property->value;
 
-            $this->properties[$name] = $value;
+            $obj->properties[$name] = $value;
         }
-
     }
+
+
 
     /**
      * Returns true if the $name property exists.
@@ -197,11 +217,47 @@ class Resource
     }
 
     /**
-     * String representation of the object
+     * String representation of the object.
+     *
+     * @return string
      */
     public function __toString()
     {
         return sprintf("label: %s type: %s uri: %s created at: %s", $this->getLabel(), $this->getType(), $this->getUri(), $this->getCreationDate());
+    }
+
+    /**
+     * Sets the report attachments.
+     * typicaly he attachements are returned with the report request
+     * the report itself will be an attachment of the reportunit
+     * @param array $attachments
+     */
+    protected function setAttachments(array $attachments)
+    {
+        $this->attachments = $attachments;
+    }
+
+    /**
+     * do we have attachments?.
+     * returns true if the report as the $name attachment or if not specified returns true if we have any attachemnt
+     *
+     * @param string $name
+     */
+    public function hasAttachments($name = null)
+    {
+        return is_null($name) ?  count($this->attachments) > 0 : array_key_exists($name, $this->attachments);
+
+    }
+
+    /**
+     * gets one or all attachments.
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getAttachments($name = null)
+    {
+        return is_null($name) ? $this->attachments : $this->attachments[$name];
     }
 
 }

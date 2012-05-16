@@ -17,7 +17,7 @@ use francodacosta\Jasper\Request\AbstractRequest;
 Abstract class BaseRepositoryRequest extends AbstractRequest
 {
     private $cli;
-    private $url = '/';
+    private $uri = '/';
     private $extraArguments = array();
 
 
