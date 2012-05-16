@@ -23,9 +23,12 @@ class Resource
     /**
      * Populates the resource from a xml document
      *
-     * @param \SimpleXMLElement $response
+     * @param \SimpleXMLElement $xml the response from jasper server
+     * @param Resource $obj the object to attach the processed response
+     *
+     * @return none;
      */
-    public function fromJasperListResponse(\SimpleXMLElement $xml, $obj = null)
+    public function fromJasperListResponse(\SimpleXMLElement $xml, Resource $obj = null)
     {
 
         $response = $xml->resourceDescriptor ? $xml->resourceDescriptor : $xml;
@@ -50,7 +53,15 @@ class Resource
 
     }
 
-    private function processProperties(\SimpleXMLElement $response, $obj)
+    /**
+     * Proceesses the response node to get some properties.
+     *
+     * @param \SimpleXMLElement $response the response from jasper server
+     * @param Resource $obj the object to attach the processed response
+     *
+     * @return none
+     */
+    private function processProperties(\SimpleXMLElement $response, Resource $obj)
     {
         foreach ($response->resourceProperty as $property) {
             $name = strtoupper($property->attributes()->name);
@@ -230,6 +241,7 @@ class Resource
      * Sets the report attachments.
      * typicaly he attachements are returned with the report request
      * the report itself will be an attachment of the reportunit
+     *
      * @param array $attachments
      */
     protected function setAttachments(array $attachments)
@@ -242,6 +254,8 @@ class Resource
      * returns true if the report as the $name attachment or if not specified returns true if we have any attachemnt
      *
      * @param string $name
+     *
+     * @return string|string[]
      */
     public function hasAttachments($name = null)
     {
@@ -253,6 +267,7 @@ class Resource
      * gets one or all attachments.
      *
      * @param string $name
+     *
      * @return mixed
      */
     public function getAttachments($name = null)
