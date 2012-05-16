@@ -14,6 +14,6 @@ $resources = $request->execute();
 
 
 echo "Listing resources Resources at " . $request->getUri();
-foreach($resources as $resource) {
+foreach ($resources as $resource) {
     echo $resource . "\n";
 }
