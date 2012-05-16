@@ -17,6 +17,13 @@ Interface TransportInterface
      */
     public function call($name, $parameters);
 
+
+    /**
+     * after a call() has been executes this function will return the raw response.
+     *
+     * @return string
+     */
+    public function getRawResponse();
     /**
      * Sets the username.
      *

@@ -52,15 +52,12 @@ class SoapTransport implements TransportInterface
             throw new JasperException($errorMessage);
         }
 
-        // bail out on jasper errors
         $xml = simplexml_load_string($response);
-        $code =  $xml->xpath('//returnCode');
-        if (is_array($code)) {
-            $code = $code[0];
-        }
-        $code = intval($code);
-        if ($code > 0) {
-            $errorMessage = "Server returned error code " . $code ;
+
+        // bail out on jasper errors
+
+        if ($this->responseHasErrors($xml)) {
+            $errorMessage = "Server returned error code " . $this->getErrorMessage($xml);
             error_log("[Jasper-php] SOAP Error : " . $errorMessage . "\n\t call: " . $name. " data: " . var_export($parameters, true));
 
             throw new JasperException($errorMessage);
@@ -69,6 +66,48 @@ class SoapTransport implements TransportInterface
         return $response;
     }
 
+
+    /**
+     * returns true if server returns an error message.
+     *
+     * @param \SimpleXMLElement $xml
+     *
+     * @return boolean
+     */
+    private function responseHasErrors(\SimpleXMLElement $xml)
+    {
+        $code =  $xml->xpath('//returnCode');
+        if (is_array($code)) {
+            $code = $code[0];
+        }
+        $code = intval($code);
+
+        return $code !== 0;
+    }
+    /**
+     * gets jasper error from the response.
+     *
+     * @param SimpleXMLElement $xml
+     *
+     * @return string
+     */
+    private function getErrorMessage(\SimpleXMLElement $xml)
+    {
+
+        $code =  $xml->xpath('//returnCode');
+        if (is_array($code)) {
+            $code = $code[0];
+        }
+        $code = intval($code);
+
+        $msg =  $xml->xpath('//returnMessage');
+        if (is_array($msg)) {
+            $msg = $msg[0];
+        }
+        $msg = (string) $msg;
+
+        return "Code: $code - $msg";
+    }
     /**
      * (non-PHPdoc)
      * @see francodacosta\Jasper\Transport.TransportInterface::getUser()
@@ -174,6 +213,15 @@ class SoapTransport implements TransportInterface
         );
 
         return new \Soap_Client($url, false, false, $opts);
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see francodacosta\Jasper\Interfaces.TransportInterface::getRawResponse()
+     */
+    public function getRawResponse()
+    {
+        return $this->getSoap()->_soap_transport;
     }
 
 }

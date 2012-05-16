@@ -19,17 +19,27 @@ Abstract class BaseRepositoryRequest extends AbstractRequest
     private $cli;
     private $uri = '/';
     private $extraArguments = array();
+    private $parameters = array();
 
-
+    /**
+     * generates a basic xml representing a request.
+     * for most common cases this is enough
+     *
+     * @param string $type the resource type
+     * @param string $name the resource name
+     *
+     * @return string xml
+     */
     protected function generateXmlRequest($type = 'folder', $name="")
     {
-        $uri = $this->getUri();
-        $arguments = $this->getExtraArguments();
+        $uri        = $this->getUri();
+        $arguments  = $this->getExtraArguments();
+        $parameters = $this->getParameters();
 
         $xml = '<request operationName="list">';
 
         foreach ($arguments as $key => $value) {
-            $xml .= sprintf('<argument name="%s">%s</argument>', $key, $value);
+            $xml .= sprintf('<argument name="%s"><![CDATA[%s]]></argument>', $key, $value);
         }
 
         $xml .= sprintf(
@@ -39,10 +49,13 @@ Abstract class BaseRepositoryRequest extends AbstractRequest
                 uriString="%s"
                 isNew="false"
                 >
-            <label></label>
-            </resourceDescriptor>', $name, $uri);
+            <label></label>', $name, $uri);
 
-        $xml .= '</request>';
+        foreach ($parameters as $key => $value) {
+            $xml .= sprintf('<parameter name="%s"><![CDATA[%s]]></parameter>', $key, $value);
+        }
+
+        $xml .= '</resourceDescriptor></request>';
 
         return $xml;
     }
@@ -51,7 +64,7 @@ Abstract class BaseRepositoryRequest extends AbstractRequest
     /**
      * Transforms the response object into a Resource class
      *
-     * @param SimpleXML  xml
+     * @param SimpleXML  $item
      *
      * @return Resource
      */
@@ -96,12 +109,63 @@ Abstract class BaseRepositoryRequest extends AbstractRequest
 
     /**
      * Sets arguments to pass to the server.
+     * this will overwrite existing arguments
      *
      * @param string[] $extraArguments
      */
     public function setExtraArguments($extraArguments)
     {
         $this->extraArguments = $extraArguments;
+    }
+
+    /**
+     * Adds an extra argument to the request.
+     *
+     * @param string $name  then name
+     * @param string $value the value
+     *
+     * @return none
+     */
+    public function addExtraArgument($name, $value)
+    {
+        $this->extraArguments[$name] = $value;
+    }
+
+
+    /**
+     * Sets the request parameters.
+     * this will overwrite existing parameters
+     *
+     * @param stirng[] $parameters
+     *
+     * @return none
+     */
+    public function setParameters(array $parameters)
+    {
+        $this->parameters = $parameters;
+    }
+
+    /**
+     * Adds a parameter to the request.
+     *
+     * @param string $name  then name
+     * @param string $value the value
+     *
+     * @return none
+     */
+    public function addParameter($name, $value)
+    {
+        $this->parameters[$name] = $value;
+    }
+
+    /**
+     * return the parameters set
+     *
+     * @return string[]
+     */
+    public function getParameters()
+    {
+        return $this->parameters;
     }
 
 }

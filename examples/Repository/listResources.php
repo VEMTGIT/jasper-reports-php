@@ -9,7 +9,7 @@ $cli = new SoapTransport($repositoryUrl, $user, $password);
 
 // executing the list resources request
 $request = new ListResources($cli);
-$request->setUri('/');
+$request->setUri('/s2000/reports');
 $resources = $request->execute();
 
 

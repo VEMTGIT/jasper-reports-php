@@ -244,7 +244,7 @@ class Resource
      *
      * @param array $attachments
      */
-    protected function setAttachments(array $attachments)
+    public function setAttachments(array $attachments)
     {
         $this->attachments = $attachments;
     }
