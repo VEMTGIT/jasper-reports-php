@@ -17,6 +17,7 @@ class FindUsers extends AbstractRequest
 {
 
     const METHOD = 'findUsers';
+
     private $searchCriteria = null;
 
     /**
