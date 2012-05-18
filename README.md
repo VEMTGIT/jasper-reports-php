@@ -6,10 +6,12 @@ Pure php library for jasper reports
 
 ##Requirements
 
-* Pear::Soap _as it seems to be the only client able to understant multiparted soap responses_
-
+ * PHP 5.3
+ * SOAP pear package (http://pear.php.net/package/SOAP/)
+ * Net_Dime pear package (http://pear.php.net/package/Net_DIME/)
 
 #Usage
+##Repository Operations
 ### Listing resources on the server:
 
 ```php
@@ -65,7 +67,7 @@ Pure php library for jasper reports
 
 ```
 
-## Executing a report
+### Executing a report
 
 ```php
 <?php
@@ -102,4 +104,23 @@ Pure php library for jasper reports
         echo "no report returned\n";
     }
 
+```
+##Administration operations
+###Searching users
+```php
+<?php
+    use francodacosta\Jasper\Transport\SoapTransport;
+    use francodacosta\Jasper\Request\Administration\FindUsers;
+    use francodacosta\Jasper\Resource\User\UserSearchCriteria;
+    
+    // setup the soap transport
+    $cli = new SoapTransport($administrationUrl, $user, $password);
+    
+    // executing the get resources request
+    $request = new FindUsers($cli);
+    
+    // this is the default behaviour, search for all users
+    $request->setSearchCriteria(new UserSearchCriteria());
+    
+    $resources = $request->execute();
 ```

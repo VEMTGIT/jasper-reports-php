@@ -46,4 +46,7 @@ use francodacosta\Jasper\Transport\SoapTransport;
 
 $user = "jasperadmin";
 $password = "jasperadmin";
-$repositoryUrl = 'http://localhost:18080/jasperserver/services/repository';
+$baseUrl = 'http://localhost:18080/jasperserver/services/';
+$repositoryUrl = $baseUrl . 'repository';
+$administrationUrl = $baseUrl . 'UserAndRoleManagementService';
+

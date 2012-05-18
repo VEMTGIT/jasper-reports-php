@@ -42,7 +42,7 @@ class SoapTransport implements TransportInterface
         $cli = $this->getSoap();
 
         $response =  $cli->call($name, $parameters);
-
+// var_dump($response); die();
         // bail out on soap errors
         if (is_soap_fault($response) || ($response instanceof \Soap_Fault)) {
             $errorMessage = $response->getFault()->faultstring;
@@ -52,6 +52,22 @@ class SoapTransport implements TransportInterface
             throw new JasperException($errorMessage);
         }
 
+        if (is_string($response)) {
+            $this->checkErrorCode($response);
+        }
+
+
+        return $response;
+    }
+
+    /**
+     * checks the response string to see if we have a server error.
+     *
+     * @param string $response
+     * @throws JasperException
+     */
+    private function checkErrorCode($response)
+    {
         $xml = simplexml_load_string($response);
 
         // bail out on jasper errors
@@ -62,10 +78,7 @@ class SoapTransport implements TransportInterface
 
             throw new JasperException($errorMessage);
         }
-
-        return $response;
     }
-
 
     /**
      * returns true if server returns an error message.
@@ -212,7 +225,7 @@ class SoapTransport implements TransportInterface
                 'timeout' => 120,
         );
 
-        return new \Soap_Client($url, false, false, $opts);
+        return new \Soap_Client($url . '?wsdl', false, false, $opts);
     }
 
     /**
