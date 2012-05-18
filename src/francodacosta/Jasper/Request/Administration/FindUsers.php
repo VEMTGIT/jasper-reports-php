@@ -21,7 +21,7 @@ class FindUsers extends AbstractRequest
     private $searchCriteria = null;
 
     /**
-     * Gets the resource defenition and attachments from the server.
+     * executes the request.
      *
      * @return francodacosta\Jasper\Resource\Resource
      */
