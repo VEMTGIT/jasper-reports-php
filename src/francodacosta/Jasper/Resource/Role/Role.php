@@ -11,10 +11,10 @@ use francodacosta\Jasper\Resource\User\User;
 class Role
 {
 
-    private $roleName;
-    private $externallyDefined;
-    private $tenantId;
-    private $users;
+    public $roleName;
+    public $externallyDefined;
+    public $tenantId;
+    public $users;
 
     /**
      * @return the unknown_type

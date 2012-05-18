@@ -9,15 +9,15 @@ use francodacosta\Jasper\Resource\Role\Role;
  */
 class User
 {
-    private $username;
-    private $fullName;
-    private $password;
-    private $emailAddress;
-    private $externallyDefined;
-    private $enabled;
-    private $previousPasswordChangeTime;
-    private $tenantId;
-    private $roles;
+    public $username = null;
+    public $fullName = null;
+    public $password = null;
+    public $emailAddress = null;
+    public $externallyDefined = null;
+    public $enabled = null;
+    public $previousPasswordChangeTime = null;
+    public $tenantId = null;
+    public $roles = null;
 
     /**
      * username.
@@ -151,6 +151,7 @@ class User
      * pervious password change time.
      *
      * @param timestamp $previousPasswordChangeTime
+     *
      */
     public function setPreviousPasswordChangeTime($previousPasswordChangeTime)
     {
