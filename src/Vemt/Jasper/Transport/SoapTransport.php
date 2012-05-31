@@ -1,14 +1,45 @@
 <?php
-namespace francodacosta\Jasper\Transport;
+/**
+ * Jasper Reports PHP integration
+ *
+ * PHP version 5
+ *
+ * LICENSE:
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation files
+ * (the "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to permit
+ * persons to whom the Software is furnished to do so, subject to the following
+ * conditions:
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ *
+ * == USE IT AT YOUR OWN RISK ==
+ *
+ * @package    Jasper-Reports
+ * @author     Nuno Costa <nuno@francodacosta.com>
+ * @copyright  2012 VEMT – Value Exchange and Marketing Technology <http://www.vemt.com>
+ * @license    http://www.opensource.org/licenses/mit-license.php MIT license
+ */
+namespace Vemt\Jasper\Transport;
 
-use francodacosta\Jasper\Interfaces\TransportInterface;
-use francodacosta\Jasper\Exception\JasperException;
+use Vemt\Jasper\Interfaces\TransportInterface;
+use Vemt\Jasper\Exception\JasperException;
 
 /**
  * Soap Transport class.
  * Makes calls to jasper reports via Soap
  *
- * @author Nuno Costa <nuno@francodacosta.com>
+ * @author Nuno Costa <nuno@Vemt.com>
  *
  */
 class SoapTransport implements TransportInterface
@@ -35,14 +66,15 @@ class SoapTransport implements TransportInterface
 
     /**
      * (non-PHPdoc)
-     * @see francodacosta\Jasper\Transport.TransportInterface::call()
+     * @see Vemt\Jasper\Transport.TransportInterface::call()
      */
     public function call($name, $parameters)
     {
         $cli = $this->getSoap();
 
         $response =  $cli->call($name, $parameters);
-// var_dump($response); die();
+//         var_dump($response); die();
+
         // bail out on soap errors
         if (is_soap_fault($response) || ($response instanceof \Soap_Fault)) {
             $errorMessage = $response->getFault()->faultstring;
@@ -123,7 +155,7 @@ class SoapTransport implements TransportInterface
     }
     /**
      * (non-PHPdoc)
-     * @see francodacosta\Jasper\Transport.TransportInterface::getUser()
+     * @see Vemt\Jasper\Transport.TransportInterface::getUser()
      */
     public function getUser()
     {
@@ -132,7 +164,7 @@ class SoapTransport implements TransportInterface
 
     /**
      * (non-PHPdoc)
-     * @see francodacosta\Jasper\Transport.TransportInterface::setUser()
+     * @see Vemt\Jasper\Transport.TransportInterface::setUser()
      */
     public function setUser($user)
     {
@@ -141,7 +173,7 @@ class SoapTransport implements TransportInterface
 
     /**
      * (non-PHPdoc)
-     * @see francodacosta\Jasper\Transport.TransportInterface::getPassword()
+     * @see Vemt\Jasper\Transport.TransportInterface::getPassword()
      */
     public function getPassword()
     {
@@ -150,7 +182,7 @@ class SoapTransport implements TransportInterface
 
     /**
      * (non-PHPdoc)
-     * @see francodacosta\Jasper\Transport.TransportInterface::setPassword()
+     * @see Vemt\Jasper\Transport.TransportInterface::setPassword()
      */
     public function setPassword($password)
     {
@@ -159,7 +191,7 @@ class SoapTransport implements TransportInterface
 
     /**
      * (non-PHPdoc)
-     * @see francodacosta\Jasper\Transport.TransportInterface::getUrl()
+     * @see Vemt\Jasper\Transport.TransportInterface::getUrl()
      */
     public function getUrl()
     {
@@ -168,7 +200,7 @@ class SoapTransport implements TransportInterface
 
     /**
      * (non-PHPdoc)
-     * @see francodacosta\Jasper\Transport.TransportInterface::setUrl()
+     * @see Vemt\Jasper\Transport.TransportInterface::setUrl()
      */
     public function setUrl($url)
     {
@@ -207,6 +239,9 @@ class SoapTransport implements TransportInterface
     protected function createSoapClient()
     {
         include_once('SOAP/Client.php');
+        if (false === class_exists('Soap_Client')) {
+            throw new JasperException('Pear::Soap package not installed or not in system path');
+        }
 
         $url  = $this->getUrl();
         $user = $this->getUser();
@@ -230,7 +265,7 @@ class SoapTransport implements TransportInterface
 
     /**
      * (non-PHPdoc)
-     * @see francodacosta\Jasper\Interfaces.TransportInterface::getRawResponse()
+     * @see Vemt\Jasper\Interfaces.TransportInterface::getRawResponse()
      */
     public function getRawResponse()
     {

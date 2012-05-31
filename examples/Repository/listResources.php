@@ -1,8 +1,8 @@
 <?php
 include __DIR__ . '/../bootstrap.php';
 
-use francodacosta\Jasper\Transport\SoapTransport;
-use francodacosta\Jasper\Request\Repository\ListResources;
+use Vemt\Jasper\Transport\SoapTransport;
+use Vemt\Jasper\Request\Repository\ListResources;
 
 // setup the soap transport
 $cli = new SoapTransport($repositoryUrl, $user, $password);

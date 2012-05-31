@@ -1,11 +1,11 @@
 <?php
-use francodacosta\Jasper\Resource\Role\Role;
+use Vemt\Jasper\Resource\Role\Role;
 
 include __DIR__ . '/../bootstrap.php';
 
-use francodacosta\Jasper\Transport\SoapTransport;
-use francodacosta\Jasper\Request\Administration\PutUser;
-use francodacosta\Jasper\Resource\User\User;
+use Vemt\Jasper\Transport\SoapTransport;
+use Vemt\Jasper\Request\Administration\PutUser;
+use Vemt\Jasper\Resource\User\User;
 
 // setup the soap transport
 $cli = new SoapTransport($administrationUrl, $user, $password);

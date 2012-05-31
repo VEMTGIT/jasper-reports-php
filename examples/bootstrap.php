@@ -39,14 +39,15 @@ class AutoLoad
 }
 
 $autoLoader = new AutoLoad();
-$autoLoader->setClassPath('francodacosta', __DIR__ . '/../src/francodacosta');
+$autoLoader->setClassPath('Vemt', __DIR__ . '/../src/Vemt');
 
-use francodacosta\Jasper\Transport\SoapTransport;
+use Vemt\Jasper\Transport\SoapTransport;
 
 
 $user = "jasperadmin";
 $password = "jasperadmin";
-$baseUrl = 'http://localhost:18080/jasperserver/services/';
+$baseUrl = 'http://solr.vemt.com:18080/reporting/services/';
+#$baseUrl = 'http://localhost:18080/jasperserver/services/';
 $repositoryUrl = $baseUrl . 'repository';
 $administrationUrl = $baseUrl . 'UserAndRoleManagementService';
 

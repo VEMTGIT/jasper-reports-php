@@ -17,8 +17,8 @@ Pure php library for jasper reports
 ```php
 <?php
 
-    use francodacosta\Jasper\Transport\SoapTransport;
-    use francodacosta\Jasper\Request\Repository\ListResources;
+    use Vemt\Jasper\Transport\SoapTransport;
+    use Vemt\Jasper\Request\Repository\ListResources;
     
     // setup the soap transport
     $cli = new SoapTransport($repositoryUrl, $user, $password);
@@ -40,8 +40,8 @@ Pure php library for jasper reports
 ```php
 <?php
 
-    use francodacosta\Jasper\Transport\SoapTransport;
-    use francodacosta\Jasper\Request\Repository\GetResource;
+    use Vemt\Jasper\Transport\SoapTransport;
+    use Vemt\Jasper\Request\Repository\GetResource;
     
     // setup the soap transport
     $cli = new SoapTransport($repositoryUrl, $user, $password);
@@ -72,8 +72,8 @@ Pure php library for jasper reports
 ```php
 <?php
 
-    use francodacosta\Jasper\Transport\SoapTransport;
-    use francodacosta\Jasper\Request\Repository\RunReport;
+    use Vemt\Jasper\Transport\SoapTransport;
+    use Vemt\Jasper\Request\Repository\RunReport;
     
     // setup the soap transport
     $cli = new SoapTransport($repositoryUrl, $user, $password);
@@ -109,9 +109,9 @@ Pure php library for jasper reports
 ###Searching users
 ```php
 <?php
-    use francodacosta\Jasper\Transport\SoapTransport;
-    use francodacosta\Jasper\Request\Administration\FindUsers;
-    use francodacosta\Jasper\Resource\User\UserSearchCriteria;
+    use Vemt\Jasper\Transport\SoapTransport;
+    use Vemt\Jasper\Request\Administration\FindUsers;
+    use Vemt\Jasper\Resource\User\UserSearchCriteria;
     
     // setup the soap transport
     $cli = new SoapTransport($administrationUrl, $user, $password);
@@ -129,9 +129,9 @@ Pure php library for jasper reports
 
 ```php
 <?php
-    use francodacosta\Jasper\Transport\SoapTransport;
-    use francodacosta\Jasper\Request\Administration\PutUser;
-    use francodacosta\Jasper\Resource\User\User;
+    use Vemt\Jasper\Transport\SoapTransport;
+    use Vemt\Jasper\Request\Administration\PutUser;
+    use Vemt\Jasper\Resource\User\User;
     
     // setup the soap transport
     $cli = new SoapTransport($administrationUrl, $user, $password);
@@ -164,9 +164,9 @@ Pure php library for jasper reports
 
 ```php
 <?php
-    use francodacosta\Jasper\Transport\SoapTransport;
-    use francodacosta\Jasper\Request\Administration\FindRoles;
-    use francodacosta\Jasper\Resource\Role\RoleSearchCriteria;
+    use Vemt\Jasper\Transport\SoapTransport;
+    use Vemt\Jasper\Request\Administration\FindRoles;
+    use Vemt\Jasper\Resource\Role\RoleSearchCriteria;
     
     // setup the soap transport
     $cli = new SoapTransport($administrationUrl, $user, $password);

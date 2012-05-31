@@ -1,9 +1,9 @@
 <?php
 include __DIR__ . '/../bootstrap.php';
 
-use francodacosta\Jasper\Transport\SoapTransport;
-use francodacosta\Jasper\Request\Administration\FindRoles;
-use francodacosta\Jasper\Resource\Role\RoleSearchCriteria;
+use Vemt\Jasper\Transport\SoapTransport;
+use Vemt\Jasper\Request\Administration\FindRoles;
+use Vemt\Jasper\Resource\Role\RoleSearchCriteria;
 
 // setup the soap transport
 $cli = new SoapTransport($administrationUrl, $user, $password);

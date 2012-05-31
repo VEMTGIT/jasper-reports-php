@@ -1,9 +1,9 @@
 <?php
 include __DIR__ . '/../bootstrap.php';
 
-use francodacosta\Jasper\Transport\SoapTransport;
-use francodacosta\Jasper\Request\Administration\FindUsers;
-use francodacosta\Jasper\Resource\User\UserSearchCriteria;
+use Vemt\Jasper\Transport\SoapTransport;
+use Vemt\Jasper\Request\Administration\FindUsers;
+use Vemt\Jasper\Resource\User\UserSearchCriteria;
 
 // setup the soap transport
 $cli = new SoapTransport($administrationUrl, $user, $password);
