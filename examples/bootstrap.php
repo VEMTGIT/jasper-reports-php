@@ -46,8 +46,7 @@ use Vemt\Jasper\Transport\SoapTransport;
 
 $user = "jasperadmin";
 $password = "jasperadmin";
-$baseUrl = 'http://solr.vemt.com:18080/reporting/services/';
-#$baseUrl = 'http://localhost:18080/jasperserver/services/';
+$baseUrl = 'http://localhost:8080/jasperserver/services/';
 $repositoryUrl = $baseUrl . 'repository';
 $administrationUrl = $baseUrl . 'UserAndRoleManagementService';
 
