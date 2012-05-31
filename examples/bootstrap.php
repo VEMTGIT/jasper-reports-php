@@ -1,6 +1,6 @@
 <?php
 /*
- * You can use any moder autoloader, jasper-reports-php respects the PSR-0 sandard
+ * You can use any modern autoloader, jasper-reports-php respects the PSR-0 sandard
  */
 
 class AutoLoad
