@@ -2,7 +2,16 @@
 
 jasper reports php library
 
-Pure php library for jasper reports
+OO implementation of jasper reports SOAP Api
+
+This library aims to fully wrap the entire jasper server api, into easy to use objects
+
+## Features
+
+* Repository access (list Resource, Get Resource, Run Report)
+* Administration access (Finde Roles, FindUsers, PutUser)
+
+More features to come
 
 ##Requirements
 
