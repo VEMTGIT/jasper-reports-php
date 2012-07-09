@@ -40,7 +40,7 @@ use Vemt\Jasper\Request\AbstractRequest;
 /**
  * Adds an user to jasper.
  *
- * @author Nuno Costa <nuno@Vemt.com>
+ * @author Nuno Costa <nuno@francodacosta.com>
  *
  */
 class PutUser extends AbstractRequest

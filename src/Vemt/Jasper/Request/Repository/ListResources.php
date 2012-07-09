@@ -42,7 +42,7 @@ use Vemt\Jasper\Request\AbstractRequest;
  * You can specify the server location (obviously)
  * You can optionaly filter the results by resource type
  *
- * @author Nuno Costa <nuno@Vemt.com>
+ * @author Nuno Costa <nuno@francodacosta.com>
  *
  */
 class ListResources extends BaseRepositoryRequest

@@ -33,9 +33,10 @@
 namespace Vemt\Jasper\Resource;
 /**
  * Represents a basic server resource.
- * This class can be extended to provide specific functionality per resource type
+ * This class can be extended to provide specific functionality per resource
+ * type
  *
- * @author Nuno Costa <nuno@Vemt.com>
+ * @author Nuno Costa <nuno@francodacosta.com>
  *
  */
 class Resource
@@ -86,6 +87,9 @@ class Resource
 
     /**
      * Proceesses the response node to get some properties.
+     *
+     * This function will populate the $obj object with properties found in the
+     * $response object
      *
      * @param \SimpleXMLElement $response the response from jasper server
      * @param Resource $obj the object to attach the processed response
@@ -265,7 +269,13 @@ class Resource
      */
     public function __toString()
     {
-        return sprintf("label: %s type: %s uri: %s created at: %s", $this->getLabel(), $this->getType(), $this->getUri(), $this->getCreationDate());
+        return sprintf(
+            "label: %s type: %s uri: %s created at: %s",
+            $this->getLabel(),
+            $this->getType(),
+            $this->getUri(),
+            $this->getCreationDate()
+        );
     }
 
     /**
@@ -282,7 +292,8 @@ class Resource
 
     /**
      * do we have attachments?.
-     * returns true if the report as the $name attachment or if not specified returns true if we have any attachemnt
+     * returns true if the report as the $name attachment or if not specified
+     * returns true if we have any attachemnt
      *
      * @param string $name
      *
@@ -290,7 +301,9 @@ class Resource
      */
     public function hasAttachments($name = null)
     {
-        return is_null($name) ?  count($this->attachments) > 0 : array_key_exists($name, $this->attachments);
+        return is_null($name) ?
+            count($this->attachments) > 0 :
+            array_key_exists($name, $this->attachments);
 
     }
 

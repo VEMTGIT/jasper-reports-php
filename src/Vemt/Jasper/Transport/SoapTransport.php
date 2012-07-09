@@ -39,7 +39,7 @@ use Vemt\Jasper\Exception\JasperException;
  * Soap Transport class.
  * Makes calls to jasper reports via Soap
  *
- * @author Nuno Costa <nuno@Vemt.com>
+ * @author Nuno Costa <nuno@francodacosta.com>
  *
  */
 class SoapTransport implements TransportInterface

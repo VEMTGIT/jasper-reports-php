@@ -40,7 +40,7 @@ use Vemt\Jasper\Request\AbstractRequest;
 /**
  * Gets a list of Roles from the server.
  *
- * @author Nuno Costa <nuno@Vemt.com>
+ * @author Nuno Costa <nuno@francodacosta.com>
  *
  */
 class FindRoles extends AbstractRequest

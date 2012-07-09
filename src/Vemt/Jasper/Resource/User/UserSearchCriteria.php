@@ -37,7 +37,7 @@ use Vemt\Jasper\Resource\Role\Role;
 /**
  * Represents a Jasper user search criteria
  *
- * @author Nuno Costa <nuno@Vemt.com>
+ * @author Nuno Costa <nuno@francodacosta.com>
  *
  */
 class UserSearchCriteria

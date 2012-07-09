@@ -35,7 +35,7 @@ namespace Vemt\Jasper\Resource\Role;
 /**
  * Search criteria for security roles.
  *
- * @author Nuno Costa <nuno@Vemt.com>
+ * @author Nuno Costa <nuno@francodacosta.com>
  *
  */
 class RoleSearchCriteria

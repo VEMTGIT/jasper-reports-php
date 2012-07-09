@@ -33,9 +33,9 @@
 namespace Vemt\Jasper\Interfaces;
 
 /**
- * Represents the minimul methods to do a request to jasper.
+ * Represents the minimal methods to do a request to jasper.
  *
- * @author Nuno Costa <nuno@Vemt.com>
+ * @author Nuno Costa <nuno@francodacosta.com>
  *
  */
 Interface RequestInterface

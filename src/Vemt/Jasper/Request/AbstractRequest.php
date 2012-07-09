@@ -37,7 +37,7 @@ use Vemt\Jasper\Interfaces\TransportInterface;
 /**
  * Helper functions for request objects.
  *
- * @author Nuno Costa <nuno@Vemt.com>
+ * @author Nuno Costa <nuno@francodacosta.com>
  *
  */
 Abstract class AbstractRequest implements RequestInterface

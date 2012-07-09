@@ -35,7 +35,7 @@ namespace Vemt\Jasper\Interfaces;
 /**
  * Minimal functionality for a Transport client (HTTP, REST, SOAP, etc...).
  *
- * @author Nuno Costa <nuno@Vemt.com>
+ * @author Nuno Costa <nuno@francodacosta.com>
  *
  */
 Interface TransportInterface

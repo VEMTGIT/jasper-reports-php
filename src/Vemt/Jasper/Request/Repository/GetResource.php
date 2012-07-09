@@ -38,7 +38,7 @@ use Vemt\Jasper\Resource\Resource;
 /**
  * Gets a resource defenition from the server.
  *
- * @author Nuno Costa <nuno@Vemt.com>
+ * @author Nuno Costa <nuno@francodacosta.com>
  *
  */
 class GetResource extends BaseRepositoryRequest

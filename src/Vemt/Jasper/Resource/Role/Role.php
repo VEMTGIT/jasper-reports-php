@@ -36,7 +36,7 @@ use Vemt\Jasper\Resource\User\User;
 /**
  * Jasper security Role.
  *
- * @author Nuno Costa <nuno@Vemt.com>
+ * @author Nuno Costa <nuno@francodacosta.com>
  *
  */
 class Role
