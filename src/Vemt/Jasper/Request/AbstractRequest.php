@@ -57,7 +57,10 @@ Abstract class AbstractRequest implements RequestInterface
      * (non-PHPdoc)
      * @see Vemt\Jasper\Interfaces.RequestInterface::execute()
      */
-    abstract function execute();
+    public function execute()
+    {
+        throw new \LogicException('AbstractRequest::execute() must be overwritten');
+    }
 
     /**
      * returns the transport client in use.
