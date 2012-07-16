@@ -61,13 +61,13 @@ Abstract class BaseRepositoryRequest extends AbstractRequest
      *
      * @return string xml
      */
-    protected function generateXmlRequest($type = 'folder', $name="")
+    protected function generateXmlRequest($operationName = 'list', $type = 'folder', $name="")
     {
         $uri        = $this->getUri();
         $arguments  = $this->getExtraArguments();
         $parameters = $this->getParameters();
 
-        $xml = '<request operationName="list">';
+        $xml = sprintf('<request operationName="%s">', $operationName);
 
         foreach ($arguments as $key => $value) {
             $xml .= sprintf('<argument name="%s"><![CDATA[%s]]></argument>', $key, $value);
@@ -76,11 +76,11 @@ Abstract class BaseRepositoryRequest extends AbstractRequest
         $xml .= sprintf(
             '<resourceDescriptor
                 name="%s"
-                wsType="folder"
+                wsType="%s"
                 uriString="%s"
                 isNew="false"
                 >
-            <label></label>', $name, $uri);
+            <label></label>', $name, $type, $uri);
 
         foreach ($parameters as $key => $value) {
             $xml .= sprintf('<parameter name="%s"><![CDATA[%s]]></parameter>', $key, $value);

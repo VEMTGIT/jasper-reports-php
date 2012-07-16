@@ -31,7 +31,6 @@
  * @license    http://www.opensource.org/licenses/mit-license.php MIT license
  */
 namespace Vemt\Jasper\Resource\Role;
-
 use Vemt\Jasper\Resource\User\User;
 /**
  * Jasper security Role.

@@ -52,10 +52,11 @@ class GetResource extends BaseRepositoryRequest
      */
     public function execute()
     {
+    	$operationName='get';
         $client = $this->getCli();
-        $xml = $this->generateXmlRequest();
+        $xml = $this->generateXmlRequest($operationName);
 
-        $resources = $client->call("get", array('requestXmlString' => $xml));
+        $resources = $client->call($operationName, array('requestXmlString' => $xml));
 
 
         $resources = simplexml_load_string($resources);
