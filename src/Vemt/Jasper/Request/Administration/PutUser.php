@@ -70,9 +70,6 @@ class PutUser extends AbstractRequest
             throw new JasperException('Unknown response format, expecting object got ' . gettype($resources));
         }
 
-
-        var_dump($resources); die();
-
         return User::fromObject($resources);
     }
 
