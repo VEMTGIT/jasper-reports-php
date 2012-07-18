@@ -48,7 +48,7 @@ class PutRole extends AbstractRequest
 
     const METHOD = 'putRole';
 
-    private $role = null;
+    private $_role = null;
 
     /**
      * executes the request.
@@ -63,7 +63,6 @@ class PutRole extends AbstractRequest
         if (null === $role) {
             throw new JasperException('No role to save');
         }
-
         $resources = $client->call(self::METHOD, array('role' => $role));
 
         if (false === is_object($resources)) {
@@ -80,7 +79,7 @@ class PutRole extends AbstractRequest
      */
     public function getRole()
     {
-        return $this->role;
+        return $this->_role;
     }
 
     /**
@@ -90,7 +89,7 @@ class PutRole extends AbstractRequest
      */
     public function setRole(Role $role)
     {
-        $this->role = $role;
+        $this->_role = $role;
     }
 
 }
