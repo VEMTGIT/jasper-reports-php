@@ -71,8 +71,6 @@ class PutUser extends AbstractRequest
         }
 
 
-        var_dump($resources); die();
-
         return User::fromObject($resources);
     }
 
