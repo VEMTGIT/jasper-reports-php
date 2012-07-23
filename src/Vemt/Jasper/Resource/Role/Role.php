@@ -46,6 +46,15 @@ class Role
     public $tenantId;
     public $users;
 
+    
+    function __construct($roleName=null, $tenantId=null)
+    {
+        $this->setRoleName($roleName);
+        $this->setTenantId($tenantId);
+    }
+    
+    
+    
     /**
      * @return the unknown_type
      */
