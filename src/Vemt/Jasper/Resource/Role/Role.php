@@ -46,37 +46,38 @@ class Role
     public $tenantId;
     public $users;
 
-    
+    /**
+     * A constructor for the class, so that you can create a Role without having to call setRoleName explicitly.
+     * 
+     * @param string $roleName
+     * @param string $tenantId
+     */
     function __construct($roleName=null, $tenantId=null)
     {
         $this->setRoleName($roleName);
         $this->setTenantId($tenantId);
     }
     
-    
-    
     /**
-     * @return the unknown_type
+     * @return the string
      */
-
     public function getRoleName()
     {
         return $this->roleName;
     }
 
     /**
-     * @param unknown_type $roleName
+     * @param string $roleName
      */
-
     public function setRoleName($roleName)
     {
         $this->roleName = $roleName;
     }
-
+    
     /**
-     * @return the unknown_type
+     * externally defined.
+     * @return boolean
      */
-
     public function getExternallyDefined()
     {
         return $this->externallyDefined;
@@ -92,36 +93,32 @@ class Role
     }
 
     /**
-     * @return the unknown_type
+     * @return the string
      */
-
     public function getTenantId()
     {
         return $this->tenantId;
     }
 
     /**
-     * @param unknown_type $tenantId
+     * @param string $tenantId
      */
-
     public function setTenantId($tenantId)
     {
         $this->tenantId = $tenantId;
     }
 
     /**
-     * @return the unknown_type
+     * @return the array
      */
-
     public function getUsers()
     {
         return $this->users;
     }
 
     /**
-     * @param unknown_type $users
+     * @param array $users
      */
-
     public function addUser($users)
     {
         null === $this->users ? $this->users = array() : false;
