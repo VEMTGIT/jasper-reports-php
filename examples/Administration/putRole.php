@@ -15,8 +15,12 @@ $request = new PutRole($cli);
 $role = new Role();
 $role->setRoleName('ROLE_TESTING');
 $role->setTenantId(null);
+
+// alternative:
+// $role = new Role('ROLE_TESTING');
+
 $request->setRole($role);
 
 $resource = $request->execute();
 
-echo "Saved user : \n" . var_export($resource, true);
+echo "Saved role : \n" . var_export($resource, true);
