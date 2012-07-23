@@ -18,20 +18,8 @@
             "homepage": "http://www.vemt.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git://github.com/VEMTGIT/jasper-reports-php.git"
-        }
-        ,{
-            "type": "pear",
-            "url": "http://pear.php.net"
-        }
-    ],
     "require": {
         "php": ">=5.3.0"
-        ,"pear/SOAP": "*"
-        ,"pear/Net_DIME": "*"
     },
     "autoload": {
         "psr-0": {
