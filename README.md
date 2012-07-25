@@ -228,5 +228,5 @@ More features to come
     
     $resource = $request->execute();
     
-    echo "Saved user : \n" . var_export($resource, true);
+    echo "Saved role : \n" . var_export($resource, true);
 ```
