@@ -106,7 +106,7 @@ class SoapTransport implements TransportInterface
 
         if ($this->responseHasErrors($xml)) {
             $errorMessage = "Server returned error code " . $this->getErrorMessage($xml);
-            error_log("[Jasper-php] SOAP Error : " . $errorMessage . "\n\t call: " . $name. " data: " . var_export($parameters, true));
+            error_log("[Jasper-php] SOAP Error : " . $errorMessage );
 
             throw new JasperException($errorMessage);
         }

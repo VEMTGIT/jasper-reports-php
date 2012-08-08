@@ -15,11 +15,7 @@ $request = new PutUser($cli);
 
 // specifying user to save
 $user = new User();
-<<<<<<< HEAD
 $user->setUsername('test_putUSER_123');
-=======
-$user->setUsername('test20120712');
->>>>>>> Added some new functionality and made some basic minor changes in other
 $user->setPassword('test1234!');
 $user->setFullName('test user');
 $user->setEmailAddress('test@foo.com');
