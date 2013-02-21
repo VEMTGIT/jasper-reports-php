@@ -62,21 +62,21 @@ class GetPermission extends AbstractRequest
             throw new JasperException('Unknown response format, expecting array got ' . gettype($resources));
         }
 
-		foreach ($resources as $r) {
-			$ret[] = Permission::fromObjet($r);
+        foreach ($resources as $r) {
+            $ret[] = Permission::fromObjet($r);
 
-		}
+        }
 
         return $ret;
     }
-	/**
-	 * Set Repository
-	 *
-	 * @param String $repository
-	 */
+    /**
+     * Set Repository
+     *
+     * @param String $repository
+     */
     public function setRepository($repository)
     {
-    	$this->repository = $repository;
+        $this->repository = $repository;
     }
     /**
      * Get Repository
@@ -85,7 +85,7 @@ class GetPermission extends AbstractRequest
      */
     public function getRepository()
     {
-    	return $this->repository;
+        return $this->repository;
     }
 
 }

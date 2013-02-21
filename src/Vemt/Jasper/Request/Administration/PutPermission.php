@@ -47,45 +47,45 @@ use Vemt\Jasper\Request\Repository\BaseRepositoryRequest;
 class PutPermission extends AbstractRequest
 {
 
-	const METHOD = 'putPermission';
-	const PARAM = 'objectPermission';
+    const METHOD = 'putPermission';
+    const PARAM = 'objectPermission';
 
-	private $objectPermission = null;
+    private $objectPermission = null;
 
 
-	/**
-	 * executes the request.
-	 *
-	 * @return Vemt\Jasper\Resource\Resource
-	 */
-	public function execute()
-	{
-		$client = $this->getCli();
-		$resources = $client->call(self::METHOD, array(self::PARAM => $this->getObjectPermission()));
+    /**
+     * executes the request.
+     *
+     * @return Vemt\Jasper\Resource\Resource
+     */
+    public function execute()
+    {
+        $client = $this->getCli();
+        $resources = $client->call(self::METHOD, array(self::PARAM => $this->getObjectPermission()));
 
-		if (false === is_object($resources)) {
-			throw new JasperException('Unknown response format, expecting object got ' . gettype($resources));
-		}
+        if (false === is_object($resources)) {
+            throw new JasperException('Unknown response format, expecting object got ' . gettype($resources));
+        }
 
-		return $resources;
-	}
-	/**
-	 * Set permission
-	 *
-	 * @param Permission $permission permission object
-	 */
-	public function setObjectPermission(Permission $permission)
-	{
-		$this->objectPermission = $permission;
-	}
-	/**
-	 * Get permission
-	 *
-	 * @return Permission object
-	 */
-	public function getObjectPermission()
-	{
-		return $this->objectPermission;
-	}
+        return $resources;
+    }
+    /**
+     * Set permission
+     *
+     * @param Permission $permission permission object
+     */
+    public function setObjectPermission(Permission $permission)
+    {
+        $this->objectPermission = $permission;
+    }
+    /**
+     * Get permission
+     *
+     * @return Permission object
+     */
+    public function getObjectPermission()
+    {
+        return $this->objectPermission;
+    }
 }
 

@@ -52,49 +52,49 @@ class Permission
      *
      * @param String $uri resource uri
      */
-	public function setUri($uri)
-	{
-		$this->uri = $uri;
-	}
-	/**
-	 * Get resource uri
-	 *
-	 * @return String
-	 */
-	public function getUri()
-	{
-		return $this->uri;
-	}
-	/**
-	 * Set permission recipient
-	 *
-	 * @param Object $object user or role object
-	 */
+    public function setUri($uri)
+    {
+        $this->uri = $uri;
+    }
+    /**
+     * Get resource uri
+     *
+     * @return String
+     */
+    public function getUri()
+    {
+        return $this->uri;
+    }
+    /**
+     * Set permission recipient
+     *
+     * @param Object $object user or role object
+     */
     public function setPermissionRecipient($object)
     {
-    	$this->permissionRecipient = $object;
+        $this->permissionRecipient = $object;
     }
-	/**
-	 * Get permission recipient
-	 *
-	 * @return Object user or role
-	 */
+    /**
+     * Get permission recipient
+     *
+     * @return Object user or role
+     */
     public function getPermissionRecipient()
     {
         return $this->permissionRecipient;
     }
-	/**
-	 * Set Permission Mask
-	 *
-	 * @param int $default permissio code
-	 *
-	 * @example 0 = no access, 1 = administer 2 = ready-only
-	 * @example 18 = read-delete, read-write-delete = 30
-	 * @example 32 = execute-only
-	 */
+    /**
+     * Set Permission Mask
+     *
+     * @param int $default permissio code
+     *
+     * @example 0 = no access, 1 = administer 2 = ready-only
+     * @example 18 = read-delete, read-write-delete = 30
+     * @example 32 = execute-only
+     */
     public function setPermissionMask($default = 2)
     {
-    	$this->permissionMask = $default;
+        $this->permissionMask = $default;
     }
 
     /**
@@ -104,30 +104,30 @@ class Permission
      */
     public function getPermissionMask()
     {
-    	return $this->permissionMask;
+        return $this->permissionMask;
     }
-	/**
-	 * Convert soap response to permission object
-	 *
-	 * @param Objecy $object soap response object
-	 *
-	 * @return Permission Object
-	 */
+    /**
+     * Convert soap response to permission object
+     *
+     * @param Objecy $object soap response object
+     *
+     * @return Permission Object
+     */
 
     public static function fromObjet($object)
     {
-		$permissionObj = new Permission();
+        $permissionObj = new Permission();
 
-		$properties = get_object_vars($object);
+        $properties = get_object_vars($object);
 
-		foreach ($properties as $name => $defaultValue) {
-			$setter = 'set' . ucfirst($name);
-			if (method_exists($permissionObj, $setter)) {
-				$permissionObj->$setter($object->$name);
-			}
-		}
+        foreach ($properties as $name => $defaultValue) {
+            $setter = 'set' . ucfirst($name);
+            if (method_exists($permissionObj, $setter)) {
+                $permissionObj->$setter($object->$name);
+            }
+        }
 
-		return $permissionObj;
+        return $permissionObj;
 
     }
 }
