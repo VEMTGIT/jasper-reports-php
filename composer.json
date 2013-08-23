@@ -1,5 +1,5 @@
 {
-    "name": "hgraca/jasper",
+    "name": "vemt/jasper",
     "type": "library",
     "version": "0.0.2",
     "description": "OO wrapper around jasper reports soap api",
