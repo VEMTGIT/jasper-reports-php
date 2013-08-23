@@ -1,8 +1,8 @@
 {
     "name": "vemt/jasper",
     "type": "library",
-    "version": "0.0.1",
-    "description": "OO wrapper arround jasper reports soap api",
+    "version": "0.0.2",
+    "description": "OO wrapper around jasper reports soap api",
     "keywords": ["reporting","jasper", "jasper-reports"],
     "homepage": "https://github.com/VEMTGIT/jasper-reports-php",
     "license": "MIT",
@@ -16,6 +16,10 @@
             "name": "VEMT",
             "email": "info@vemt.com",
             "homepage": "http://www.vemt.com"
+        },
+        {
+            "name": "Herberto Graca",
+            "email": "herberto.graca@gmail.com"
         }
     ],
     "require": {
@@ -23,8 +27,8 @@
     },
     "autoload": {
         "psr-0": {
-            "Vemt": ""
+            "Vemt": "src"
         }
     }
-    
+
 }
