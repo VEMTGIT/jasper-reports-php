@@ -1,8 +1,8 @@
 {
-    "name": "vemt/jasper",
+    "name": "hgraca/jasper",
     "type": "library",
-    "version": "0.0.1",
-    "description": "OO wrapper arround jasper reports soap api",
+    "version": "0.0.2",
+    "description": "OO wrapper around jasper reports soap api",
     "keywords": ["reporting","jasper", "jasper-reports"],
     "homepage": "https://github.com/VEMTGIT/jasper-reports-php",
     "license": "MIT",
