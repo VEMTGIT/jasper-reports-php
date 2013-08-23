@@ -16,6 +16,10 @@
             "name": "VEMT",
             "email": "info@vemt.com",
             "homepage": "http://www.vemt.com"
+        },
+        {
+            "name": "Herberto Graca",
+            "email": "herberto.graca@gmail.com"
         }
     ],
     "require": {
@@ -23,8 +27,8 @@
     },
     "autoload": {
         "psr-0": {
-            "Vemt": ""
+            "Vemt": "src"
         }
     }
-    
+
 }
